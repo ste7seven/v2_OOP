@@ -4,10 +4,20 @@ using UnityEngine;
 
 public class PlayerController : Entity
 {
+    private bool isGameOver = false;
+
+    public void OnTriggerEnter(Collider other)
+    {
+        Debug.Log("Enter Trigger");
+        if(other.gameObject.CompareTag("Car"))
+        {
+            GameOver();
+        }
+    }
 
     public override void Move()
     {
-        float speed = 10.0f;
+        float speed = 5.0f;
 
         float moveHorizontal = Input.GetAxis("Horizontal");
         float moveVertical = Input.GetAxis("Vertical");
@@ -18,6 +28,13 @@ public class PlayerController : Entity
     private void Update()
     {
         Move();
+    }
+
+    void GameOver()
+    {
+        isGameOver = true;
+        Debug.Log("Game Over!");
+        // Hier kannst du weitere GameOver-Logik hinzufügen, z.B. den Hund stoppen oder Autos nicht mehr spawnen
     }
 
 }
