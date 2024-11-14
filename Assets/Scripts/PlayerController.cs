@@ -11,11 +11,11 @@ public class PlayerController : Entity
         Debug.Log("Enter Trigger");
         if(other.gameObject.CompareTag("Car"))
         {
-            GameOver();
+            GameOver(); // ABSTRACTION
         }
     }
 
-    public override void Move()
+    public override void Move() // INHERITANCE
     {
         float speed = 5.0f;
 
